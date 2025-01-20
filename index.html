@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/estilos.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playwrite+VN&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+    <title>Ciudades y Su clima</title>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Descubrelo hoy mismo!</h3>
+      <h1>TU LUGAR IDEAL CON EL CLIMA PERFECTO</h1>       
+      <h5>
+        ¿Frío, cálido o templado? Descubre la ciudad que encaja con tu clima
+        ideal y prepárate para explorar un lugar hecho a tu medida.
+      </h5>
+      <div class="dropholder">
+        <p>Selecciona:</p>
+      
+        <div class="dropdown-container">
+          <div class="dropdown">
+            <p><i class="fa fa-foursquare"></i> Temperatura:</p>
+          </div>
+          <ul class="menu">
+            <li id="temperatura"><i class="fa fa-thumbs-down"></i> Menor a 15°</li>
+            <li><i class="fa fa-thumbs-up"></i> Entre 15° y 25°</li>
+            <li><i class="fa fa-bolt"></i> Mas de 25°</li>      
+          </ul>
+        </div>      
+        <div class="dropdown-container">
+          <div class="dropdown">
+            <p><i class="fa fa-foursquare"></i> Clima</p>
+          </div>
+          <ul class="menu">
+            <li><i class="fa fa-thumbs-down"></i> Lluvioso</li>
+            <li><i class="fa fa-thumbs-up"></i> Nublado</li>
+            <li><i class="fa fa-bolt"></i> Soleado</li>      
+          </ul>
+        </div>      
+        <div class="dropdown-container">
+          <div class="dropdown">
+            <p><i class="fa fa-foursquare"></i> Viento</p>
+          </div>
+          <ul class="menu">
+            <li><i class="fa fa-thumbs-down"></i> Brisa Ligera</li>
+            <li><i class="fa fa-thumbs-up"></i> Moderado</li>
+            <li><i class="fa fa-bolt"></i> Vientos Fuertes</li>
+            <li><i class="fa fa-star"></i> Rafagas Intensas</li>      
+          </ul>
+        </div>       
+      <button id="btn_buscar" class="custom-btn">Buscar</button>
+      </div>      
+    </div>
+  </body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./js/mains.js"></script>

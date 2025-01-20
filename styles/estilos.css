@@ -1,0 +1,255 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../assets/background1.jpeg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: aliceblue;
+  font-size: 15px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra todo verticalmente */
+  align-items: left; /* Centra horizontalmente */
+  height: 80vh; /* Usa el 80% de la altura de la pantalla */
+  margin: 0;
+  margin-left: 3rem;
+  font-family: "Roboto Condensed", serif;
+  font-optical-sizing: auto;
+}
+
+h1 {
+  font-family: "Roboto Condensed", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 5rem;
+  line-height: 1; /* Reduce el espacio entre líneas */
+  margin-top: .8rem;
+  margin-bottom: .8rem;
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+  
+}
+h3 {
+  font-family: "Roboto Condensed", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 2rem;
+  text-align: justify;
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+}
+h5 {
+  font-family: "Roboto Condensed", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.4rem;
+  text-align: justify;
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+  
+}
+
+.parametros {
+  font-family: "Roboto Condensed", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+.container {
+  margin-top: 8rem;
+  width: 80%;
+  max-width: 800px;
+  line-height: 1; /* Reduce el espacio entre líneas */
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+  margin-top: 2rem;
+  max-width: 800px;
+  height: 80px;
+  background-color: RGBA(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.main__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.6rem;
+}
+
+
+/* Contenedor principal */
+.dropholder {
+  width: 780px;
+  margin: 50px auto;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #222;
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid #f5f4f5;
+  animation: move 3s ease-in-out infinite;
+  background: linear-gradient(#f1eef1, #fffbff);
+}
+
+/* Animación de la tarjeta */
+@keyframes move {
+  0%, 100% { transform: translateY(-10px); }
+  50% { transform: translateY(0); }
+}
+
+@keyframes moveShadow {
+  0%, 100% { transform: translateY(10px); opacity: 0.4; }
+  50% { transform: translateY(0); opacity: 1; }
+}
+
+/* Texto dentro del contenedor */
+p {
+  padding-right: 10px;
+  float: left;
+  line-height: 60px;  
+}
+
+/* Contenedor individual para cada dropdown */
+.dropdown-container {
+  position: relative;
+  display: inline-block; /* Permite alinear los dropdowns en línea */
+  margin-right: 10px;
+}
+
+/* Estilos del botón dropdown */
+.dropdown {
+  transition: all 0.3s;
+  float: left;
+  width: 158px;
+  height: 58px;
+  padding: 0 20px;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer; 
+  background: linear-gradient(#4dc2f8, #0d82b9);
+  position: relative;
+  line-height: 58px;
+  color: white;
+  font-size: 16px;
+}
+
+/* Cambio de color al pasar el mouse */
+.dropdown:hover {
+  background: linear-gradient(#0d82b9, #4dc2f8);
+  transform: translateY(-50%);
+  transform: scale(1.05);
+}
+
+/* Flecha desplegable en el dropdown */
+.dropdown:after {
+  content: "▾";
+  font-size: 1px;
+  position: absolute;
+  right: 15px;
+  top: 18px;
+  display: block;
+}
+
+/* Estilos del menú desplegable */
+.menu {
+  position: absolute;
+  left: 0;  /* Se alinea con el dropdown */
+  top: 60px; /* Se coloca justo debajo del dropdown */
+  width: 160px;
+  cursor: pointer;
+  opacity: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(90deg);
+  background: linear-gradient(#4dc2f8, #0d82b9);
+  border: 2px solid #0d82b9;
+  border-radius: 10px;
+  transition: all 0.4s ease-in-out;
+  z-index: 5;
+  overflow: hidden;
+  display: none; /* Oculto por defecto */
+  font-size:14px;
+}
+
+/* Opciones dentro del menú */
+.menu li {
+  padding: 10px 10px;
+  border-bottom: 1px dotted #fff;
+  color: #e8f8ff;
+  transition: all 0.3s;
+  list-style: none;
+}
+
+/* Hover sobre opciones del menú */
+.menu li:hover {
+  background: linear-gradient( #0d82b9, #4dc2f8);
+  padding-left: 20px;
+}
+
+/* Último elemento sin borde */
+.menu li:last-child {
+  border: none;
+}
+
+/* Clase para mostrar el menú */
+.showMenu {
+  opacity: 1;
+  transform: rotateX(0deg);
+  display: block;
+}
+
+/* Íconos */
+li > i {
+  float: left;
+  padding-top: 3px;
+  padding-right: 8px;
+}
+
+p > i {
+  position: relative;
+  top: 2px;
+}
+
+i {
+  opacity: 0.7;
+}
+
+.custom-btn {  
+  position: absolute;  
+  background: linear-gradient(#444444, #333333); /* Gris oscuro */
+  color: rgb(241, 238, 238);
+  font-size: 16px;
+  padding: 10px 20px;  
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-left: 8px; 
+  border-radius: 8px;
+  float:right;
+  height: 58px;
+  width: 130px;
+  line-height: 38px;
+  text-align: center;  
+  box-shadow: none;  /* Elimina cualquier sombra 3D */
+  outline: none;  /* Elimina cualquier contorno que pueda parecer un borde */
+  border: none;
+  font-family: "Roboto Condensed", serif;
+  font-optical-sizing: auto;
+}
+
+.custom-btn:hover {  
+  transform: translateY(-50%);  
+  transform: scale(1.05);
+  background: linear-gradient(#333333, #444444);
+}
