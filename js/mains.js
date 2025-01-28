@@ -1,4 +1,6 @@
-let temperaturaSeleccionada = "";
+let temperatura = "";
+let clima = "";
+let viento = "";
 
 window.addEventListener("DOMContentLoaded", () => {
   // Menu con movimiento
@@ -13,20 +15,70 @@ window.addEventListener("DOMContentLoaded", () => {
       menu.find("li").click(function () {
         parentContainer.find(".dropdown > p").html($(this).html());
         menu.removeClass("showMenu");
-        let textoSeleccionado = $(this).text().trim();
-        temperaturaSeleccionada = textoSeleccionado;
-        obtenerTemperatura();
-        
+        let valorseleccionado = $(this).text().trim();
+        let id_dropdown = parentContainer.attr("id");
+
+        if (id_dropdown == "temperatura") {
+          temperatura = valorseleccionado;
+        } else if (id_dropdown == "clima") {
+          clima = valorseleccionado;
+        } else if (id_dropdown == "viento") {
+          viento = valorseleccionado;
+        }
       });
     });
   });
-  // Función para obtener la temperatura seleccionada
-  function obtenerTemperatura() {
-    console.log("Temperatura seleccionada desde la función:",temperaturaSeleccionada);
-    return temperaturaSeleccionada; 
-  }
+
+  /* // Función para obtener los datos seleccionados
+  function obtenerDatos() {
+    console.log("Temperatura seleccionada:", temperatura);
+    console.log("Clima seleccionado: ", clima);
+    console.log("Viento seleccionado:", viento);
+    return {
+      temperatura,
+      clima,
+      viento,
+    };
+  } */
 
   $("#btn_buscar").click(function () {
-    console.log("Temperatura seleccionada al presionar Buscar:", obtenerTemperatura());
+    console.log("Datos seleccionados al presionar Buscar:", consultarDatos());
   });
-});
+
+  // Función consultar datos seleccionados con los de la API
+
+  function consultarDatos() {
+    fetch('https://clima-api-bp73.onrender.com',{
+      headers: {
+        'Authorization': 'Bearer rnd_NP8BNuWBTDdLmbWNi0hDf8RxEao4', // La API Key va con 'Bearer'
+        'Accept': 'application/json'
+    }
+
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Listado de ciudades encontradas:", data);
+        })
+        .catch(error => {
+            console.error("Error al obtener ciudades:", error);
+        });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  });
