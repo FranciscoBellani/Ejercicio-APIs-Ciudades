@@ -48,13 +48,14 @@ window.addEventListener("DOMContentLoaded", () => {
   // Función consultar datos seleccionados con los de la API
 
   function consultarDatos() {
-    fetch('https://cors-anywhere.herokuapp.com/https://clima-api-bp73.onrender.com')
-       .then(response => response.json())
-       .then(data => {
-          console.log("Listado de ciudades encontradas:", data);
-       })
-       .catch(error => {
-          console.error("Error al obtener ciudades:", error);
-       });
- }
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(data => {
+        console.log("Datos obtenidos:", data);
+      })
+      .catch(error => {
+        console.error("Error al obtener datos:", error);
+      });
+  }
+  
 });
