@@ -48,37 +48,13 @@ window.addEventListener("DOMContentLoaded", () => {
   // Función consultar datos seleccionados con los de la API
 
   function consultarDatos() {
-    fetch('https://clima-api-bp73.onrender.com',{
-      headers: {
-        'Authorization': 'Bearer rnd_NP8BNuWBTDdLmbWNi0hDf8RxEao4', // La API Key va con 'Bearer'
-        'Accept': 'application/json'
-    }
-
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Listado de ciudades encontradas:", data);
-        })
-        .catch(error => {
-            console.error("Error al obtener ciudades:", error);
-        });
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-  });
+    fetch('https://cors-anywhere.herokuapp.com/https://clima-api-bp73.onrender.com')
+       .then(response => response.json())
+       .then(data => {
+          console.log("Listado de ciudades encontradas:", data);
+       })
+       .catch(error => {
+          console.error("Error al obtener ciudades:", error);
+       });
+ }
+});
