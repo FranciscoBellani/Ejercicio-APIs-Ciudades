@@ -1,6 +1,9 @@
 let temperatura = "";
 let clima = "";
 let viento = "";
+let precipitaciones="";
+
+
 
 window.addEventListener("DOMContentLoaded", () => {
   // Menu con movimiento
@@ -20,14 +23,38 @@ window.addEventListener("DOMContentLoaded", () => {
 
         if (id_dropdown == "temperatura") {
           temperatura = valorseleccionado;
-        } else if (id_dropdown == "clima") {
-          clima = valorseleccionado;
+        } else if (id_dropdown == "precipitaciones") {
+          precipitaciones = valorseleccionado;
         } else if (id_dropdown == "viento") {
           viento = valorseleccionado;
         }
       });
     });
   });
+
+  function convertir_a_datos (temperatura, precipitaciones, viento){
+   let filtros= {};
+   // Convertir temperatura a un valor mínimo (podríamos usar un rango)
+  if (temperatura === "Frío") filtros.temperatura = "0";
+  else if (temperatura === "Templado") filtros.temperatura = "10";
+  else if (temperatura === "Cálido") filtros.temperatura = "21";
+  else if (temperatura === "Caluroso") filtros.temperatura = "30";
+
+  // Convertir precipitaciones
+  if (precipitaciones === "Seco") filtros.precipitaciones = "0";
+  else if (precipitaciones === "Moderado") filtros.precipitaciones = "2";
+  else if (precipitaciones === "Lluvioso") filtros.precipitaciones = "11";
+  else if (precipitaciones === "Muy lluvioso") filtros.precipitaciones = "30";
+
+  // Convertir viento
+  if (viento === "Calma") filtros.viento = "0";
+  else if (viento === "Brisa") filtros.viento = "10";
+  else if (viento === "Ventoso") filtros.viento = "31";
+  else if (viento === "Muy ventoso") filtros.viento = "60";
+
+  return filtros;
+    }
+
 
   /* // Función para obtener los datos seleccionados
   function obtenerDatos() {
@@ -42,20 +69,26 @@ window.addEventListener("DOMContentLoaded", () => {
   } */
 
   $("#btn_buscar").click(function () {
-    console.log("Datos seleccionados al presionar Buscar:", consultarDatos());
+    console.log("Datos seleccionados al presionar buscar:", consultarDatos());    
   });
 
   // Función consultar datos seleccionados con los de la API
 
-  function consultarDatos() {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then(data => {
-        console.log("Datos obtenidos:", data);
-      })
-      .catch(error => {
-        console.error("Error al obtener datos:", error);
-      });
+  async function consultarDatos() {
+    try {
+      const response = await fetch('https://clima-api-bp73.onrender.com');
+      
+      if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      console.log("Datos obtenidos:", data);
+    } catch (error) {
+      console.error("Error al obtener datos, verificar conexion a internet:", error);
+    }
   }
+ 
+
   
 });
