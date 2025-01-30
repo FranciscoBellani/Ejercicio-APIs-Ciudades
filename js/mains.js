@@ -76,18 +76,24 @@ window.addEventListener("DOMContentLoaded", () => {
 
   async function consultarDatos() {
     try {
-      const response = await fetch('https://clima-api-bp73.onrender.com');
-      
-      if (!response.ok) {
-        throw new Error(`Error HTTP: ${response.status}`);
-      }
-  
-      const data = await response.json();
-      console.log("Datos obtenidos:", data);
+        let filtros = convertir_a_datos(temperatura, precipitaciones, viento);
+        let url = `https://clima-api-bp73.onrender.com/filtrar?temperatura=${filtros.temperatura}&precipitaciones=${filtros.precipitaciones}&viento=${filtros.viento}`;
+        
+        console.log("Consultando API con URL:", url);
+        
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+        }
+    
+        const data = await response.json();
+        console.log("Datos obtenidos:", data);
     } catch (error) {
-      console.error("Error al obtener datos, verificar conexion a internet:", error);
+        console.error("Error al obtener datos:", error);
     }
-  }
+}
+
  
 
   
