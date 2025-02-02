@@ -70,6 +70,34 @@ async function fetchConTimeout(url, timeout = 50000) {
   ]);
 }
 
+function mostrarCiudades(ciudades) {
+  // Obtén el contenedor donde se mostrarán los resultados
+  const resultadosContainer = document.getElementById("resultados");
+
+  // Limpia el contenido anterior del contenedor
+  resultadosContainer.innerHTML = "";
+
+  // Si no hay ciudades, muestra un mensaje
+  if (ciudades.length === 0) {
+    resultadosContainer.innerHTML = "<p>No se encontraron ciudades con los criterios seleccionados.</p>";
+    return;
+  }
+
+  // Recorre cada ciudad y crea un elemento HTML para mostrarla
+  ciudades.forEach((ciudad) => {
+    const ciudadElement = document.createElement("div");
+    ciudadElement.className = "ciudad"; // Añade una clase para estilos CSS
+    ciudadElement.innerHTML = `
+      <h3>${ciudad.Ciudad}</h3>
+      <p>Temperatura: ${ciudad.Temperatura}°C</p>
+      <p>Precipitaciones: ${ciudad.Precipitaciones} mm</p>
+      <p>Viento: ${ciudad.Viento} km/h</p>
+      <p>Presión: ${ciudad.Presion} hPa</p>
+    `;
+    resultadosContainer.appendChild(ciudadElement);
+  });
+}
+
 // Función consultar datos seleccionados con los de la API
 async function consultarDatos() {
   try {
@@ -96,7 +124,6 @@ async function consultarDatos() {
 }
 
 
- 
 
   
 });
