@@ -56,18 +56,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
 
-  /* // Función para obtener los datos seleccionados
-  function obtenerDatos() {
-    console.log("Temperatura seleccionada:", temperatura);
-    console.log("Clima seleccionado: ", clima);
-    console.log("Viento seleccionado:", viento);
-    return {
-      temperatura,
-      clima,
-      viento,
-    };
-  } */
-
   $("#btn_buscar").click(function () {
     console.log("Datos seleccionados al presionar buscar:", consultarDatos());    
   });
@@ -76,23 +64,26 @@ window.addEventListener("DOMContentLoaded", () => {
 
   async function consultarDatos() {
     try {
-        let filtros = convertir_a_datos(temperatura, precipitaciones, viento);
-        let url = `https://clima-api-bp73.onrender.com/filtrar?temperatura=${filtros.temperatura}&precipitaciones=${filtros.precipitaciones}&viento=${filtros.viento}`;
-        
-        console.log("Consultando API con URL:", url);
-        
-        const response = await fetch(url);
-        
-        if (!response.ok) {
-            throw new Error(`Error HTTP: ${response.status}`);
-        }
-    
-        const data = await response.json();
-        console.log("Datos obtenidos:", data);
+      let filtros = convertir_a_datos(temperatura, precipitaciones, viento);
+      let url = `https://clima-api-bp73.onrender.com/filtrar?temperatura=${filtros.temperatura}&precipitaciones=${filtros.precipitaciones}&viento=${filtros.viento}`;
+  
+      console.log("Consultando API con URL:", url);
+  
+      const response = await fetch(url);
+      if (!response.ok) {
+        const errorResponse = await response.text(); // or response.json() if the API returns JSON
+        throw new Error(`Error HTTP: ${response.status}, Response: ${errorResponse}`);
+      }
+  
+      const data = await response.json();
+      console.log("Datos obtenidos:", data);
+  
+      // Display the filtered cities on the page
+      mostrarCiudades(data);
     } catch (error) {
-        console.error("Error al obtener datos:", error);
+      console.error("Error al obtener datos:", error);
     }
-}
+  }
 
  
 
