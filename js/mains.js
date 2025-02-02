@@ -60,30 +60,41 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log("Datos seleccionados al presionar buscar:", consultarDatos());    
   });
 
-  // Función consultar datos seleccionados con los de la API
+  // Función para hacer fetch con un timeout de 50 segundos
+async function fetchConTimeout(url, timeout = 50000) {
+  return Promise.race([
+    fetch(url), // Petición normal
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("Tiempo de espera agotado")), timeout)
+    )
+  ]);
+}
 
-  async function consultarDatos() {
-    try {
-      let filtros = convertir_a_datos(temperatura, precipitaciones, viento);
-      let url = `https://clima-api-bp73.onrender.com/filtrar?temperatura=${filtros.temperatura}&precipitaciones=${filtros.precipitaciones}&viento=${filtros.viento}`;
-  
-      console.log("Consultando API con URL:", url);
-  
-      const response = await fetch(url);
-      if (!response.ok) {
-        const errorResponse = await response.text(); // or response.json() if the API returns JSON
-        throw new Error(`Error HTTP: ${response.status}, Response: ${errorResponse}`);
-      }
-  
-      const data = await response.json();
-      console.log("Datos obtenidos:", data);
-  
-      // Display the filtered cities on the page
-      mostrarCiudades(data);
-    } catch (error) {
-      console.error("Error al obtener datos:", error);
+// Función consultar datos seleccionados con los de la API
+async function consultarDatos() {
+  try {
+    let filtros = convertir_a_datos(temperatura, precipitaciones, viento);
+    let url = `https://clima-api-bp73.onrender.com/filtrar?temperatura=${filtros.temperatura}&precipitaciones=${filtros.precipitaciones}&viento=${filtros.viento}`;
+
+    console.log("Consultando API con URL:", url);
+
+    const response = await fetchConTimeout(url, 50000); // Espera máximo 50 segundos
+
+    if (!response.ok) {
+      const errorResponse = await response.text(); // o response.json() si la API devuelve JSON
+      throw new Error(`Error HTTP: ${response.status}, Response: ${errorResponse}`);
     }
+
+    const data = await response.json();
+    console.log("Datos obtenidos:", data);
+
+    // Muestra las ciudades en la página
+    mostrarCiudades(data);
+  } catch (error) {
+    console.error("Error al obtener datos:", error);
   }
+}
+
 
  
 
