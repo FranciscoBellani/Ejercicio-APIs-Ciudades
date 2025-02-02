@@ -99,11 +99,11 @@ function mostrarCiudades(ciudades) {
 }
 
 // Función consultar datos seleccionados con los de la API
-async function consultarDatos() {
+async function consultarDatos() { 
   try {
     let filtros = convertir_a_datos(temperatura, precipitaciones, viento);
     console.log("filtros seleccionados y a buscar:",temperatura, precipitaciones, viento);
-    let url = `https://clima-api-bp73.onrender.com/filtrar?temperatura=${filtros.temperatura}&precipitaciones=${filtros.precipitaciones}&viento=${filtros.viento}`;
+    let url = `https://climaapi-production.up.railway.app/filtrar?temperatura=${filtros.temperatura}&precipitaciones=${filtros.precipitaciones}&viento=${filtros.viento}`;
 
     console.log("Consultando API con URL:", url);
 
