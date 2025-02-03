@@ -71,22 +71,34 @@ async function fetchConTimeout(url, timeout = 50000) {
 }
 
 function mostrarCiudades(ciudades) {
-  // Obtén el contenedor donde se mostrarán los resultados
   const resultadosContainer = document.getElementById("resultados");
+  const tituloResultados = document.getElementById("titulo-resultados");
 
-  // Limpia el contenido anterior del contenedor
+  // Limpia el contenido anterior
   resultadosContainer.innerHTML = "";
 
-  // Si no hay ciudades, muestra un mensaje
+  // Si no hay ciudades, oculta el contenedor y el título
   if (ciudades.length === 0) {
-    resultadosContainer.innerHTML = "<p>No se encontraron ciudades con los criterios seleccionados.</p>";
+    resultadosContainer.style.display = "none";
+    tituloResultados.style.display = "none"; 
     return;
   }
+  
+
+  // Muestra el contenedor y el título
+  resultadosContainer.style.display = "flex"; 
+  tituloResultados.style.display = "block"; 
+
+  // Agregar título dinámicamente
+  tituloResultados.innerHTML = "<h2 class='titulo-ciudades'>Estas ciudades van contigo:</h2>";
+
+  // Limitar a 3 resultados
+  const ciudadesMostradas = ciudades.slice(0, 3);
 
   // Recorre cada ciudad y crea un elemento HTML para mostrarla
-  ciudades.forEach((ciudad) => {
+  ciudadesMostradas.forEach((ciudad) => {
     const ciudadElement = document.createElement("div");
-    ciudadElement.className = "ciudad"; // Añade una clase para estilos CSS
+    ciudadElement.className = "ciudad"; 
     ciudadElement.innerHTML = `
       <h3>${ciudad.Ciudad}</h3>
       <p>Temperatura: ${ciudad.Temperatura}°C</p>
@@ -97,6 +109,7 @@ function mostrarCiudades(ciudades) {
     resultadosContainer.appendChild(ciudadElement);
   });
 }
+
 
 // Función consultar datos seleccionados con los de la API
 async function consultarDatos() { 
