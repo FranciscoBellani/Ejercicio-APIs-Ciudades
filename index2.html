@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página Responsive</title>
+  <link rel="stylesheet" href="./styles/estilos2.css">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Playwrite+VN&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <!-- Columna Principal: Contenido (Izquierda) -->
+    <div class="primary-column">
+      <div class="titles">
+        <h3>Descubrelo hoy mismo!</h3>
+      <h1>TU LUGAR IDEAL CON EL CLIMA PERFECTO</h1>       
+      <h5>
+        ¿Frío, cálido o templado? Descubre la ciudad que encaja con tu clima
+        ideal y prepárate para explorar un lugar hecho a tu medida. Resultados basados en el promedio anual.
+      </h5>
+      </div>
+      <!-- Menú Dropdown -->
+      <div class="dropholder">
+        <p>Selecciona:</p>      
+        <div id="temperatura" class="dropdown-container">
+          <div class="dropdown">
+            <p><i class="fa fa-foursquare"></i> Temperatura:</p>
+          </div>
+          <ul class="menu">
+            <li><i class="fa fa-thumbs-down"></i> Frio</li>
+            <li><i class="fa fa-thumbs-up"></i> Templado</li>
+            <li><i class="fa fa-bolt"></i>Cálido</li>   
+            <li><i class="fa fa-bolt"></i>Caluroso</li>       
+          </ul>
+        </div>      
+        <div id="precipitaciones" class="dropdown-container">
+          <div class="dropdown">
+            <p><i class="fa fa-foursquare"></i> Precipitaciones:</p>
+          </div>
+          <ul  class="menu">
+            <li><i class="fa fa-thumbs-down"></i>Seco</li>
+            <li><i class="fa fa-thumbs-up"></i>Moderado</li>
+            <li><i class="fa fa-bolt"></i>Lluvioso</li>    
+            <li><i class="fa fa-bolt"></i>Muy Lluvioso</li>   
+          </ul>
+        </div>      
+        <div id="viento" class="dropdown-container">
+          <div class="dropdown">
+            <p><i class="fa fa-foursquare"></i> Viento:</p>
+          </div>
+          <ul class="menu">
+            <li><i class="fa fa-thumbs-down"></i>Calmo</li>
+            <li><i class="fa fa-thumbs-up"></i>Brisa</li>
+            <li><i class="fa fa-bolt"></i>Ventoso</li>    
+            <li><i class="fa fa-bolt"></i>Muy Ventoso</li> 
+          </ul>
+        </div>       
+      <button id="btn_buscar" class="custom-btn">Buscar</button>
+      </div>  
+    </div>
+    <!-- Columna de Resultados: (Derecha) -->
+    <div class="secondary-column">
+      <h2 id="tituloResultados">Estas ciudades van contigo:</h2>
+      <div class="resultados" id="resultados"></div>  
+    </div>
+  </div>  
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 - Todos los derechos reservados - Fran Bellani</p>
+  </footer> 
+
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./js/mains2.js"></script>
