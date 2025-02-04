@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/estilos.css" />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Playwrite+VN&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-    </style>
-    <title>Ciudades y Su clima</title>
-  </head>
-  <body>
-    <div class="container">
-      <h3>Descubrelo hoy mismo!</h3>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tu Destino ideal</title>
+  <link rel="stylesheet" href="./styles/estilos.css">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Playwrite+VN&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <!-- Columna Principal: Contenido (Izquierda) -->
+    <div class="primary-column">
+      <div class="titles">
+        <h3>Descubrelo hoy mismo!</h3>
       <h1>TU LUGAR IDEAL CON EL CLIMA PERFECTO</h1>       
       <h5>
         ¿Frío, cálido o templado? Descubre la ciudad que encaja con tu clima
         ideal y prepárate para explorar un lugar hecho a tu medida. Resultados basados en el promedio anual.
       </h5>
+      </div>
+      <!-- Menú Dropdown -->
       <div class="dropholder">
         <p>Selecciona:</p>      
         <div id="temperatura" class="dropdown-container">
@@ -54,16 +58,20 @@
           </ul>
         </div>       
       <button id="btn_buscar" class="custom-btn">Buscar</button>
-      </div>         
-    </div>
-    <div id="contenedor-resultados">  
-      <div class="titulo-resultados" id="titulo-resultados">Estas ciudades van contigo:</div>     
-      <div class="resultados" id="resultados">
-        <!-- Aquí se insertan los elementos con clase "ciudad" -->
       </div>  
     </div>
-    
-  </body>
+    <!-- Columna de Resultados: (Derecha) -->
+    <div class="secondary-column">
+      <h2 id="tituloResultados">Tu destino ideal te espera en:</h2>
+      <div class="resultados" id="resultados"></div>  
+    </div>
+  </div>  
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 - Todos los derechos reservados - Fran Bellani</p>
+  </footer> 
+
+</body>
 </html>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="./js/mains.js"></script>
