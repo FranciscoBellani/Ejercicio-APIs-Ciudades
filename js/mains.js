@@ -87,10 +87,10 @@ function mostrarCiudades(ciudades) {
 
   // Muestra el contenedor y el título
   resultadosContainer.style.display = "flex"; 
-  tituloResultados.style.display = "block"; 
+  tituloResultados.style.display = "flex"; 
 
   // Agregar título dinámicamente
-  tituloResultados.innerHTML = "<h2 class='titulo-ciudades'>Estas ciudades van contigo:</h2>";
+  tituloResultados.innerHTML = "<h2 class='titulo-resultados'>Estas ciudades van contigo:</h2>";
 
   // Limitar a 3 resultados
   const ciudadesMostradas = ciudades.slice(0, 3);
