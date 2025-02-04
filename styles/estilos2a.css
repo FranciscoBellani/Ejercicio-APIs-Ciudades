@@ -1,130 +1,136 @@
-/* Estilos globales */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  font-family: "Roboto Condensed", sans-serif;
-  color: #fff;
-  background-image: url("../assets/background1.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;  
-  height: 100%; /* Asegura que el html y body tengan 100% de alto */
-  margin: 0; /* Elimina los márgenes predeterminados */
 
+body {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Dos columnas: 2/3 para la izquierda y 1/3 para la derecha */
+  gap: 20px; /* Espacio entre columnas */
+  padding: 20px;
+  background-image: url("../assets/background1.jpeg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: aliceblue;
+  font-size: 15px;
+  text-align: left;
+  height: 80vh; /* Usa el 80% de la altura de la pantalla */
+  margin: 0;
+  margin-left: 3rem;
+  font-family: "Roboto Condensed", serif;
+  font-optical-sizing: auto;
 }
 
-/* Propiedades comunes a h1, h3 y h5 */
-h1,
-h3,
+h1 {
+  font-family: "Roboto Condensed", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 5rem;
+  line-height: 1; /* Reduce el espacio entre líneas */
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+  max-width: 70%;
+}
+h3 {
+  font-family: "Roboto Condensed", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 2rem;
+  text-align: justify;
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+}
 h5 {
   font-family: "Roboto Condensed", serif;
   font-optical-sizing: auto;
+  font-weight: 300;
   font-style: normal;
-  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilo para h1 */
-h1 {
-  font-weight: 500;
-  font-size: 5rem;
-  line-height: 1; /* Reduce el espacio entre líneas */
-  margin: 0.8rem 0;
-  max-width: 70%;
-}
-
-/* Estilo para h3 */
-h3 {
-  font-weight: 300;
-  font-size: 2rem;
-  text-align: justify;
-}
-
-/* Estilo para h5 */
-h5 {
-  font-weight: 300;
   font-size: 1.4rem;
   text-align: justify;
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
   max-width: 70%;
 }
-/* Contenedor Grid principal */
-.grid-container {
-  display: grid;
-  grid-template-columns: 60% 40%;
-  gap: 5px;
-  margin: 0; /* Elimina los márgenes predeterminados */
-  height: 90vh; /* El contenedor ocupará el alto completo de la ventana */
+
+.parametros {
+  font-family: "Roboto Condensed", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1rem;
 }
-/* Columna Principal: Contenido (Izquierda) */
-.primary-column {
-  grid-column: 1;
+
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start; /* Alineado a la izquierda */
   padding: 20px;
+  margin-top: 4rem;
 }
-.primary-column .titles {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 30px;
-  margin-left: 2%;
-}
-.primary-column h1,
-.primary-column h2,
-.primary-column p {
-  text-align: left;
-}
-/* Placeholder para el menú dropdown */
 
-/* Columna de Resultados (Derecha) */
-.secondary-column {
-  grid-column: 2;
+.main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+  margin-top: 2rem;
+  max-width: 800px;
+  height: 80px;
+  background-color: RGBA(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.main__form {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centra verticalmente */
-  padding: 10px;
-  margin-right: 10%;
-  margin-top: 15%;
+  row-gap: 0.6rem;
 }
-.secondary-column h2 {
-  padding: 2%;
-  font-weight: 400;
-  font-size: 1.2rem;
-  color: rgb(57, 56, 56);
-  background-color: #fff;
-  display: inline-block; /* Para evitar márgenes extra */
-  line-height: 1; /* Reduce el espacio extra de línea */
-  border-radius: 0 10px 0 0;
+#resultados,
+#titulo-resultados {
+  display: none;
 }
-.secondary-column {
-  display: none; /* Oculta toda la sección de resultados por defecto */
-}
+
+
 .resultados {
-  margin: 0;
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-  padding: 10px;
-  border-radius: 0 0px 10px 0;
-  background: #fff;
+  flex-wrap: wrap; /* Para que los elementos se acomoden en varias filas */
+  justify-content: space-around; /* Espacios uniformes entre los elementos */
+  gap: 10px; /* Espacio entre cada ciudad */
+  margin: auto 0; /* Centrado en ambos ejes */
+  width: 40%; /* Ajusta el tamaño según necesites */
+  padding: 20px;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+  background-color: rgba(245, 239, 239);
+  margin-left: 20px; /* Espacio entre contenido y resultados */
+  position: absolute;
+  top: 55%; /* Centrado vertical */
+  left: 70%; /* Centrado horizontal */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Ajuste para asegurar que el centro esté en el medio */
 }
 .ciudad {
+  display: flex;
+  flex-direction: column; /* Cambié a columna para que la información de cada ciudad esté vertical */
+  justify-content: center;
+  align-items: left;
+  width: 30%; /* Ancho fijo para que las ciudades se alineen ordenadamente */
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
   background: linear-gradient(#4dc2f8, #0d82b9);
-  color: #fff;
   border-radius: 0 10px 10px 0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
-/* Footer */
-footer {
-  color: #fff;
-  text-align: center;
-  padding: 15px;
+.titulo-resultados {
+ 
 }
 
 /* Contenedor principal */
@@ -301,14 +307,4 @@ i {
   transform: translateY(-50%);
   transform: scale(1.05);
   background: linear-gradient(#333333, #444444);
-}
-/* Responsive: En pantallas pequeñas, apilar columnas */
-@media (max-width: 768px) {
-  .grid-container {
-    grid-template-columns: 1fr;
-  }
-  .primary-column,
-  .secondary-column {
-    grid-column: 1;
-  }
 }
